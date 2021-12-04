@@ -7,26 +7,29 @@
     outline: none;
     border: none;
     font-family: 'Poppins', sans-serif;
+    color: #FFF;
 }
 :root{
     --size: 4;
+    --glassColor: rgba(255,255,255,0.1);
+    --sensitiveGlass: rgba(255,255,255,0.3);
 }
 body{
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgb(228, 73, 137),rgb(77, 119, 236));
+    height: 100vh;
+    background: linear-gradient(to right,rgb(119, 205, 226),rgb(155, 88, 233));
     overflow: hidden;
 }
 .container{
     width: 360px;
     padding: 12px;
-    background: rgba(255,255,255,0.1);
+    background: var(--glassColor);
     border-radius: 12px;
     backdrop-filter: blur(5px);
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-left: 1px solid rgba(255,255,255,0.3);
+    border-top: 1px solid var(--sensitiveGlass);
+    border-left: 1px solid var(--sensitiveGlass);
     box-shadow: 12px 28px 13px rgba(204, 194, 194, 0.007);
     transition: all .3s ease-in;
     .display{
@@ -36,7 +39,6 @@ body{
         text-align: right;
         padding-right: 20px;
         background: transparent;
-        color: #FFF;
         font-size: 22px;
     }
     .buttons{
@@ -47,11 +49,10 @@ body{
         button{
             cursor: pointer;
             font-size: 16px;
-            color: #FFF;
             border-radius: 12px;
             background: transparent;
             &:hover{
-                background: rgba(255,255,255,0.1);
+                background: var(--glassColor);
             }
         }
 
@@ -70,7 +71,7 @@ body{
     right: 25px;
     width: 150px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: var(--glassColor);
     display: flex;
     align-items: center;
     .box{
@@ -79,7 +80,7 @@ body{
         left: 0;
         width: 50px;
         height: 100%;
-        background: rgba(255,255,255,0.3);
+        background: var(--sensitiveGlass);
         cursor: pointer;
         transform: translateX(0);
         transition: all .3s ease-in-out;
@@ -94,29 +95,29 @@ body{
         transform: translateX(-48%);
     }
     p{
+        position: absolute;
         transform: translateX(0);
         transition: all .3s ease-in-out;
-        color: #FFF;
         font-size: 14px;
-        position: absolute;
         right: 12px;
     }
 }
 .extend-box{
     top: 80px;
+    margin-bottom: 200px;
 }
 .dark-mode-body{
-    background: linear-gradient(rgb(8, 7, 7),rgb(97, 77, 143));
+    background: linear-gradient(to right,rgb(56, 60, 110),rgb(34, 90, 136));
 }
 .date{
-    color: rgba(255,255,255,0.2);
+    color: var(--sensitiveGlass);
     position: fixed;
     right: 25px;
     bottom: 25px;
 }
 .gift{
     font-size: 26px;
-    color: rgba(255,255,255,0.3);
+    color: var(--sensitiveGlass);
     font-weight: 600;
     z-index: -1;
 }
@@ -129,13 +130,38 @@ body{
     span{
         margin: 0 20px;
         display: block;
-        color: rgba(255,255,255,0.3);
-        font-size: 40px;
-        animation: move 6s linear infinite;
+        color: var(--sensitiveGlass);
+        font-size: 30px;
+        animation: animatedNumbers 3.5s ease-in-out;
     }
 }
-@keyframes move{
+@keyframes animatedNumbers{
     to{
         transform: translateX(90vh) translateY(90vh) rotate(120deg);
+    }
+}
+@media(max-width: 1108px){
+    .changes-container{
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .extend-box{
+            top: 25px;
+            right: -174px;
+        }
+        .animation-wrapper span{
+            font-size: 20px;
+        }
+    }
+}
+@media(max-width: 700px){
+    body{
+        overflow: scroll;
+    }
+    .animation-wrapper{
+        display: none;
     }
 }
